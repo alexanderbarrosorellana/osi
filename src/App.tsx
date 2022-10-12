@@ -1,17 +1,17 @@
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import Home from './pages/Home';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
+import { ErrorPage, Home } from './pages';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorPage />,
   },
-]);
+], { basename: '/osi'});
 
 
 const queryClient = new QueryClient()
