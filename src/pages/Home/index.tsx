@@ -21,7 +21,7 @@ export interface Pharmacy {
 }
 
 const getPharmacyNightShift = async (): Promise<Pharmacy[]> => {
-  const response = await axios('/pharmacyNightShift')
+  const response = await axios('/osi/pharmacyNightShift')
   return response.data
 }
 
