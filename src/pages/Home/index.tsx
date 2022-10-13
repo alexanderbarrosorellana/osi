@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
 import { PharmacyList } from './PharmacyList';
+import { pharmaciesUrl } from '../../requests';
 
 export interface Pharmacy {
   fecha: string; 
@@ -21,7 +22,7 @@ export interface Pharmacy {
 }
 
 const getPharmacyNightShift = async (): Promise<Pharmacy[]> => {
-  const response = await axios('/osi/pharmacyNightShift')
+  const response = await axios(pharmaciesUrl())
   return response.data
 }
 

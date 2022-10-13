@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      "/osi/pharmacyNightShift": {
+      "/pharmacyNightShift": {
         target: "https://farmanet.minsal.cl/index.php/ws/getLocalesTurnos",
         changeOrigin: true,
         secure: false,
