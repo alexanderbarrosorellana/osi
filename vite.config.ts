@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/pharmacyNightShift": {
-        target: "https://farmanet.minsal.cl/index.php/ws/getLocalesTurnos",
+        target: "http://localhost:8080/pharmacies",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/pharmacyNightShift/, ""),

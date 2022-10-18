@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
 import { PharmacyList } from './PharmacyList';
-import { pharmaciesUrl } from '../../requests';
+import { pharmaciesUrl, pharmaciesFallbackUrl } from '../../requests';
 
 export interface Pharmacy {
   fecha: string; 
@@ -22,16 +22,26 @@ export interface Pharmacy {
 }
 
 const getPharmacyNightShift = async (): Promise<Pharmacy[]> => {
-  const response = await axios(pharmaciesUrl())
-  return response.data
+  try {
+    const response = await axios(pharmaciesUrl())
+    return response.data
+  } catch (error) {
+    console.log('getPharmacyNightShift Error:', error);
+    return await getPharmacyNightShiftFallback();
+  }
 }
 
+const getPharmacyNightShiftFallback = async (): Promise<Pharmacy[]> => {
+    const response = await axios(pharmaciesFallbackUrl)
+    return response.data
+}
 
 const Home = () => {
     const { data, isLoading, error} = useQuery(['pharmacyNightShift'], getPharmacyNightShift)
+    console.log('Error: ', error);
   return (
     <>
-     {isLoading && 
+      {isLoading && 
       (<Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
       <LinearProgress color="secondary" /><LinearProgress color="success" /><LinearProgress color="inherit" />
         </Stack>)}

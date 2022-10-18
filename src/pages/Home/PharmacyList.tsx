@@ -10,18 +10,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 
-// date
-// pharmacyName
-// communeName
-// localityName
-// pharmacyAddress
-// openningTime
-// closingTime
-// phone
-// latitude
-// longitude
-// runningDay
-
 const headCells = [
   'Fecha',
   'Nombre',
